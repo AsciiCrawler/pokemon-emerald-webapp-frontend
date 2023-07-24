@@ -60,7 +60,7 @@ export default function Home() {
 
     return (
         <main className="flex flex-col items-center justify-center w-full">
-            <div className='z-10 w-[40%] flex my-12'>
+            <div className='z-10 max-w-[320px] w-[40%] flex my-12'>
                 <img className='w-full object-contain' src="/pokemon.webp" alt="" />
             </div>
 
