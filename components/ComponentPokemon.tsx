@@ -36,7 +36,7 @@ export const ComponentType = ({ type }: { type: string }) => {
 
 const ComponentPokemon = ({ pokemon, setId }: { pokemon: IPokemonMinimal, setId: Dispatch<SetStateAction<number>> }) => {
     return (
-        <Paper onClick={() => { setId(pokemon.id); }} className='flex flex-col justify-center items-center w-[calc(25%-16px)] mx-2 my-4 px-2 py-2 transition-all hover:-translate-y-3 hover:brightness-90'>
+        <Paper onClick={() => { setId(pokemon.id); }} className='flex flex-col justify-center items-center w-[calc(100%-16px)] min-[300px]:w-[calc(50%-16px)] min-[420px]:w-[calc((100%/3)-16px)] min-[620px]:w-[calc((100%/4)-16px)] min-[768px]:w-[calc((100%/5)-16px)] mx-2 my-4 px-2 py-2 transition-all hover:-translate-y-3 hover:brightness-90'>
             <div className='aspect-square w-full rounded-xl'>
                 <img className='w-full h-full object-contain' loading='lazy' src={pokemon.gif} alt={pokemon.gif} />
             </div>

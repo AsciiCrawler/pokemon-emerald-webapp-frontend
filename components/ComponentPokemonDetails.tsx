@@ -29,16 +29,15 @@ const ComponentPokemonDetails = ({ id, setId }: { id: number, setId: Dispatch<Se
             <div onClick={(event) => {
                 event.stopPropagation();
             }} className='bg-white flex flex-col p-6 rounded-xl drop-shadow-xl'>
-                <span className='flex font-bold text-xl mb-4'>
+                <span className='flex font-bold text-xl mb-4 self-center'>
                     {data.pokemon_identifier}
                 </span>
-                <div className='flex'>
-                    <div className='w-32 h-32 flex drop-shadow-sm bg-gray-200 rounded-xl'>
+                <div className='flex flex-col'>
+                    <div className='w-32 h-32 flex drop-shadow-sm bg-gray-200 rounded-xl self-center mb-4'>
                         <img className='w-full h-full object-contain' src={data.gif} alt="" />
                     </div>
-                    <div className='flex flex-col mx-8'>
-                        <div className='flex mb-4'>
-                            <span className='w-20'>Type: </span>
+                    <div className='flex flex-col mx-8 mb-4'>
+                        <div className='flex mb-4 self-center'>
                             <div className='flex w-36'>
                                 {data.type.map(type => {
                                     return <ComponentType key={`POKEMON_${data.id}_type`} type={type} />
@@ -73,8 +72,6 @@ const ComponentPokemonDetails = ({ id, setId }: { id: number, setId: Dispatch<Se
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     )
