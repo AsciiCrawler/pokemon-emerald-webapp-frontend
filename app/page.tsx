@@ -104,8 +104,8 @@ export default function Home() {
             <div className='flex w-full max-w-5xl flex-wrap z-10'>
                 {pokmeonElements}
             </div>
-            {typeof window !== 'undefined' && createPortal(<ComponentPokemonDetails setId={setId} id={id} />, document.body)}
-            {typeof window !== 'undefined' && createPortal(<div className='background-emerald fixed top-0 left-0 w-full h-full'></div>, document.body)}
+            <ComponentPokemonDetails setId={setId} id={id} />
+            <div className='background-emerald fixed top-0 left-0 w-full h-full'></div>
             
         </main>
     )

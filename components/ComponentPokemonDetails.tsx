@@ -40,7 +40,7 @@ const ComponentPokemonDetails = ({ id, setId }: { id: number, setId: Dispatch<Se
                         <div className='flex mb-4 self-center'>
                             <div className='flex w-36'>
                                 {data.type.map(type => {
-                                    return <ComponentType key={`POKEMON_${data.id}_type`} type={type} />
+                                    return <ComponentType key={`POKEMON_${type}_type`} type={type} />
                                 })}
                             </div>
                         </div>
