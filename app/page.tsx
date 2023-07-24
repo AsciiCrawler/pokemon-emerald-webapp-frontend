@@ -3,6 +3,7 @@ import ComponentPokemon from '@/components/ComponentPokemon';
 import ComponentPokemonDetails from '@/components/ComponentPokemonDetails';
 import { getAllPokemonsMinimal } from '@/utilities/api'
 import { IPokemonMinimal } from '@/utilities/interfaces';
+import { Input, MenuItem, Paper, Select, TextField } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -58,50 +59,54 @@ export default function Home() {
     }, [pokemons, regex, sort, filter]);
 
     return (
-        <main className="flex flex-col items-center justify-center w-full bg-white">
-            <div className='flex w-full mas-w-5xl'>
-                <input onChange={event => { setRegex(event.target.value); }} type="text" name="regex" id="regex" className='bg-red-400' />
+        <main className="flex flex-col items-center justify-center w-full">
+            <div className='z-10 w-[40%] flex my-12'>
+                <img className='w-full object-contain' src="/pokemon.webp" alt="" />
+            </div>
 
-                <select value={sort} onChange={event => {
+            <Paper className='flex w-full max-w-5xl pl-4 z-10 py-2'>
+                <TextField className='mx-4' variant='outlined' placeholder='Search by name' onChange={event => { setRegex(event.target.value); }} type="text" name="regex" id="regex" />
+                
+                <Select className='mx-4' variant='outlined' value={sort} onChange={event => {
                     if (event.target.value === "SORT_A_Z" || event.target.value === "SORT_Z_A" || event.target.value === "SORT_NUMBER")
                         setSort(event.target.value);
                 }} name="" id="">
-                    <option value="SORT_NUMBER">{`By Number`}</option>
-                    <option value="SORT_A_Z">{`A -> Z`}</option>
-                    <option value="SORT_Z_A">{`Z -> A`}</option>
-                </select>
+                    <MenuItem value="SORT_NUMBER">{`By Number`}</MenuItem>
+                    <MenuItem value="SORT_A_Z">{`A -> Z`}</MenuItem>
+                    <MenuItem value="SORT_Z_A">{`Z -> A`}</MenuItem>
+                </Select>
 
-                <select value={filter} onChange={event => {
+                <Select className='mx-4' variant='outlined' value={filter} onChange={event => {
                     if (event.target.value === "all" || event.target.value === "normal" || event.target.value === "fighting" || event.target.value === "flying" || event.target.value === "poison" || event.target.value === "ground" || event.target.value === "rock" || event.target.value === "bug" || event.target.value === "ghost" || event.target.value === "steel" || event.target.value === "fire" || event.target.value === "water" || event.target.value === "grass" || event.target.value === "electric" || event.target.value === "psychic" || event.target.value === "ice" || event.target.value === "dragon" || event.target.value === "dark")
                         setFilter(event.target.value);
                 }} name="" id="">
-                    <option value="all">{`all`}</option>
-                    <option value="normal">{`normal`}</option>
-                    <option value="fighting">{`fighting`}</option>
-                    <option value="flying">{`flying`}</option>
-                    <option value="poison">{`poison`}</option>
-                    <option value="ground">{`ground`}</option>
-                    <option value="rock">{`rock`}</option>
-                    <option value="bug">{`bug`}</option>
-                    <option value="ghost">{`ghost`}</option>
-                    <option value="steel">{`steel`}</option>
-                    <option value="fire">{`fire`}</option>
-                    <option value="water">{`water`}</option>
-                    <option value="grass">{`grass`}</option>
-                    <option value="electric">{`electric`}</option>
-                    <option value="psychic">{`psychic`}</option>
-                    <option value="ice">{`ice`}</option>
-                    <option value="dragon">{`dragon`}</option>
-                    <option value="dark">{`dark`}</option>
-                </select>
-            </div>
-
-            {/* "normal" | "fighting" | "flying" | "poison" | "ground" | "rock" | "bug" | "ghost" | "steel" | "fire" | "water" | "grass" | "electric" | "psychic" | "ice" | "dragon" | "dark" */}
-
-            <div className='flex w-full max-w-5xl flex-wrap'>
+                    <MenuItem value={"all"}></MenuItem>
+                    <MenuItem value="all">{`all`}</MenuItem>
+                    <MenuItem value="normal">{`normal`}</MenuItem>
+                    <MenuItem value="fighting">{`fighting`}</MenuItem>
+                    <MenuItem value="flying">{`flying`}</MenuItem>
+                    <MenuItem value="poison">{`poison`}</MenuItem>
+                    <MenuItem value="ground">{`ground`}</MenuItem>
+                    <MenuItem value="rock">{`rock`}</MenuItem>
+                    <MenuItem value="bug">{`bug`}</MenuItem>
+                    <MenuItem value="ghost">{`ghost`}</MenuItem>
+                    <MenuItem value="steel">{`steel`}</MenuItem>
+                    <MenuItem value="fire">{`fire`}</MenuItem>
+                    <MenuItem value="water">{`water`}</MenuItem>
+                    <MenuItem value="grass">{`grass`}</MenuItem>
+                    <MenuItem value="electric">{`electric`}</MenuItem>
+                    <MenuItem value="psychic">{`psychic`}</MenuItem>
+                    <MenuItem value="ice">{`ice`}</MenuItem>
+                    <MenuItem value="dragon">{`dragon`}</MenuItem>
+                    <MenuItem value="dark">{`dark`}</MenuItem>
+                </Select>
+            </Paper>
+            <div className='flex w-full max-w-5xl flex-wrap z-10'>
                 {pokmeonElements}
             </div>
-            {createPortal(<ComponentPokemonDetails setId={setId} id={id} />, document.body)}
+            {typeof window !== 'undefined' && createPortal(<ComponentPokemonDetails setId={setId} id={id} />, document.body)}
+            {typeof window !== 'undefined' && createPortal(<div className='background-emerald fixed top-0 left-0 w-full h-full'></div>, document.body)}
+            
         </main>
     )
 }

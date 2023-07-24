@@ -1,5 +1,6 @@
 'use client';
 import { IPokemonMinimal } from '@/utilities/interfaces';
+import { Paper } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 
 const getTypeColor = (type: string) => {
@@ -35,9 +36,9 @@ export const ComponentType = ({ type }: { type: string }) => {
 
 const ComponentPokemon = ({ pokemon, setId }: { pokemon: IPokemonMinimal, setId: Dispatch<SetStateAction<number>> }) => {
     return (
-        <div onClick={() => { setId(pokemon.id); }} className='flex flex-col justify-center items-center w-[25%] px-4 py-8 transition-all hover:-translate-y-3 hover:brightness-90'>
-            <div className='aspect-square w-full bg-[#f2f2f2] rounded-xl'>
-                <img className='w-full h-full object-contain' src={pokemon.gif} alt={pokemon.gif} />
+        <Paper onClick={() => { setId(pokemon.id); }} className='flex flex-col justify-center items-center w-[calc(25%-16px)] mx-2 my-4 px-2 py-2 transition-all hover:-translate-y-3 hover:brightness-90'>
+            <div className='aspect-square w-full rounded-xl'>
+                <img className='w-full h-full object-contain' loading='lazy' src={pokemon.gif} alt={pokemon.gif} />
             </div>
 
             <span className='px-[12px] text-left w-full text-gray-500 font-bold text-sm'>#{pokemon.id}</span>
@@ -45,7 +46,7 @@ const ComponentPokemon = ({ pokemon, setId }: { pokemon: IPokemonMinimal, setId:
             <div className='px-[12px] flex w-full'>
                 {pokemon.type.map((type: string) => <ComponentType key={pokemon.id + "-" + type} type={type} />)}
             </div>
-        </div>
+        </Paper>
     )
 }
 

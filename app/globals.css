@@ -2,15 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-html { 
+html {
     font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-  color: black;
-  background: white;
+    color: black;
+    background: white;
 }
 
 img {
     image-rendering: pixelated;
+}
+
+.background-emerald {
+    background: rgb(42, 104, 142);
+    background: -moz-linear-gradient(180deg, rgba(42, 104, 142, 1) 0%, rgba(64, 144, 115, 1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(42, 104, 142, 1) 0%, rgba(64, 144, 115, 1) 100%);
+    background: linear-gradient(180deg, rgba(42, 104, 142, 1) 0%, rgba(64, 144, 115, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2a688e", endColorstr="#409073", GradientType=1);
 }
