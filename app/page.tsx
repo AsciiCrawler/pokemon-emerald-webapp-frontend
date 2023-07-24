@@ -64,7 +64,7 @@ export default function Home() {
                 <img className='w-full object-contain' src="/pokemon.webp" alt="" />
             </div>
 
-            <Paper className='flex w-full max-w-5xl pl-4 z-10 py-2'>
+            <Paper className='flex w-[calc(100%-20px)] max-w-5xl pl-4 z-10 py-2'>
                 <TextField className='mx-4' variant='outlined' placeholder='Search by name' onChange={event => { setRegex(event.target.value); }} type="text" name="regex" id="regex" />
                 
                 <Select className='mx-4' variant='outlined' value={sort} onChange={event => {
